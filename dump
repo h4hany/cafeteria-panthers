@@ -1,0 +1,66 @@
+<nav class="navbar navbar-fixed-top navbar-bootsnipp animate" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <img src="img/cafe.jpg" width="100px" height="5%">Cafeteria
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+    </div>
+    <div class="bootsnipp-search animate">
+        <div class="container">
+            <form action="http://bootsnipp.com/search" method="GET" role="search">
+                <div class="input-group">
+                    <input class="form-control" name="q" placeholder="Search for snippets and hit enter" type="text">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="reset"><span class="glyphicon glyphicon-remove"></span></button>
+          </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+while( $row = mysqli_fetch_array($result)) {
+                        echo "<tr class='info'>";
+                       // echo "<td>" . $row['date'] . "</td>";
+
+                         echo '<td><button class="btn btn-default" data-toggle="collapse" data-target="#show-product">'.$row['date'].'</button>
+                                <div id="show-product" class="collapse">
+                                <p><img src=" '. $row['pic_link'] .' " width="10%">
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;'.$row['quantity'].'
+
+                                </p></div></td>';
+                        echo "<td>" . $row['status'] . "</td>";
+                        echo "<td>50 EG</td>";
+                        echo "<td><a class='btn btn-danger' href='cancel-order.php?ID=" . $row['prod_id'] . "'>CANCEL</a></td>";
+                        echo "</tr>";
+
+
+                    }
+
+
+       while( $row = mysqli_fetch_array($result)) {?>
+                        <tr class='info'>
+
+                       <td><button class="btn btn-default" data-toggle="collapse" data-target="#show-product"><?php echo$row['date'];?></button>
+                                <div id="show-product" class="collapse">
+                                    <?php
+                                    $sql2="select p.pic_link,p.price,p.prod_name from `order` as o ,`product` as p where o.prod_id=p.prod_id";
+                                    $result2 = mysqli_query($connection, $sql2);
+                                    while( $row2 = mysqli_fetch_array($result2)) {
+                                    ?>
+                                    <p><img src=" <?php echo $row2['pic_link']; ?> " width="10%">
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;<?php //echo $row2['quantity'];?>
+
+                                    </p></div><?php }?>
+                       </td>
+                        <td><?php echo $row['status'];?></td>
+                        <td>50 EG</td>
+                        <td><a class='btn btn-danger' href='cancel-order.php?ID=<?php echo $row['prod_id'];?>'>CANCEL</a></td>
+                        </tr>
+
+
+                 <?php   }
+
+                    ?>

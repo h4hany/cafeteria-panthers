@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Welcome To Cafeteria</title>
+    <link rel="alternate" type="application/rss+xml" title="Latest snippets from Bootsnipp.com" href="http://bootsnipp.com/feed.rss">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://bootsnipp.com/dist/bootsnipp.min.css?ver=7d23ff901039aef6293954d33d23c066">
+    <style type="text/css">
+
+
+        .form-signin input[type="text"] {
+            margin-bottom: -1px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .form-signin .form-control {
+            position: relative;
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+    </style>
+   <body>
+
+
+<nav class="navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#my-navbar">
+                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">
+                <a href="">Cafeteria</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row" style="margin-top:60px;">
+        <div class="col-md-4 col-md-offset-4">
+            <form method="POST" action="loginFunction.php" role="form" id="loginform" class="form-signin">
+                <fieldset>
+                    <h3 class="sign-up-title" style="color:dimgray; text-align: center">Welcome to Cafeteria <br>Please sign in</h3>
+
+                    <hr class="colorgraph">
+                    <input class="form-control email-title" placeholder="Login-Name" name="login_name" type="text">
+                    <input class="form-control" placeholder="Password" name="login_password" value="" type="password">
+
+                    <div class="checkbox" style="width:140px;">
+                        <label><input name="remember" value="Remember Me" type="checkbox"> Remember Me</label>
+                    </div>
+                    <input name="login_btn"class="btn btn-lg btn-success btn-block" value="Login" type="submit">
+
+
+                    <br>
+                    <p class="text-center"></p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-1.11.2.js"></script>
+
+
+</body>
+</html>
