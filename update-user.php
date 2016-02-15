@@ -10,7 +10,13 @@ $target_file="";
 $name="";
 $email="";
 $room=0;
+
 $ext=0;
+//$name = $_POST['name'];
+//$room = $_POST['room'];
+//$ext = $_POST['ext'];
+//$email = $_POST['email'];
+//$password=$_POST['password']
 if (! isset($_POST['name']) || empty($_POST['name']) ) {$error .="No Name ";$errorCheck=1;}else {$name = $_POST['name'];}
 if (! isset($_POST['room']) || empty($_POST['room']) ) {$error .="No room ";$errorCheck=1;}else {$room = $_POST['room'];}
 if (! isset($_POST['ext']) || empty($_POST['ext']) ) {$error .="No ext  ";$errorCheck=1;}else {$ext = $_POST['ext'];}
@@ -80,31 +86,31 @@ if ($errorCheck != 1) {
 
     $hashedPass = md5($password);
     $role=$_POST['role'];
-     $bdCeck=new DatabaseChecker();
+    $updated_user_id=$_POST['id'];
+    $bdCeck=new DatabaseChecker();
     if($bdCeck->checkName($name,$connection,"user")==true || $bdCeck->checkEmail($email,$connection,"user")==true){
-            $query = "insert into `user` (user_name,email,password,photo_link,role) VALUES ('$name','$email','$hashedPass','$target_file','$role')";
-            $result = mysqli_query($connection, $query);
-            if ($result) {
+        $query = "UPDATE  `user` set user_name='$name',email='$email',password='$hashedPass',photo_link='$target_file',role='$role' where id='$updated_user_id'";
+        $result = mysqli_query($connection, $query);
+        if ($result) {
 
-                echo "add";
-                $lastID = mysqli_insert_id($connection);
+            echo "updated";
 
-                $query4 = "insert into `room` (room_id,room_ext) VALUES ('$room','$ext')";
-                $result4 = mysqli_query($connection, $query4);
-                if ($result4) {
+            $query4 = "UPDATE `room` set room_id='$room',room_ext='$ext' WHERE room_id='$room' ";
+            $result4 = mysqli_query($connection, $query4);
+            if ($result4) {
 
-                    $query3 = "insert into `user_room` (user_id,room_id) VALUES ('$lastID','$room')";
-                    $result3 = mysqli_query($connection, $query3);
-                }
-
-            } else {
-                echo "error";
+                $query3 = "update `user_room` set room_id='$room' WHERE user_id='$updated_user_id'";
+                $result3 = mysqli_query($connection, $query3);
             }
-            header("Location: http://localhost/cafeteria/all-users.php");
-            }
-    else{header("Location: http://localhost/cafeteria/register.php?error=User already Exist in database"); }
 
-}else{header("Location: http://localhost/cafeteria/register.php?error=".$error);}
+        } else {
+            echo "error";
+        }
+        header("Location: http://localhost/cafeteria/all-users.php");
+    }
+    else{header("Location: http://localhost/cafeteria/update-user.php?error=User already Exist in database"); }
+
+}else{header("Location: http://localhost/cafeteria/update-user.php?error=".$error);}
 
 
 ?>

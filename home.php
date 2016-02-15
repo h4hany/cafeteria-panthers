@@ -35,7 +35,7 @@ if(isset($_SESSION['login_user'])){
     <!-- Nav Bar-->
 
     <?php
-        if($_SESSION['login_user_id'] > 1){require_once ('layout/user-header.php');}else {
+        if($_SESSION['role'] == "user"){require_once ('layout/user-header.php');}else {
         require_once ('layout/header.php');}
 
 

@@ -38,7 +38,7 @@
                     ini_set('display_errors', 1);
 
                     //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                    $sql="select o.date,o.status,o.quantity,p.pic_link,p.price,p.prod_name,p.prod_id from `order` as o ,`product` as p where o.prod_id=p.prod_id and o.status='Processing' GROUP BY o.date";
+                    $sql="select o.date,o.status,o.quantity,p.pic_link,p.price,p.prod_name,p.prod_id from `order` as o ,`product` as p where o.prod_id=p.prod_id and o.status='Processing' ";
 
                     $result = mysqli_query($connection, $sql);
 

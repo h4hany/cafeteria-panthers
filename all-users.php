@@ -16,7 +16,7 @@
     <body>
     <div class="container">
         <?php require_once ('layout/header.php');?>
-<br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         <h3 id="add"><a href="register.php">Add User</a></h3>
         <div class="row">
             <div class="btn-group btn-group-justified">

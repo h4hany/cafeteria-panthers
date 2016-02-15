@@ -1,4 +1,5 @@
 <?php session_start();?>
+
 <nav class="navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -22,7 +23,8 @@
 
             <ul class="nav navbar-nav navbar-right" style="color: white">
                 <!-- <li><div><img id="greeting" src="<?php //echo $row['photo_link']; ?>" width="8%"></div></li>-->
-                <li><h3><?php echo ucfirst($_SESSION['login_user']); ?></h3></li>
+                <li style="padding-right: 5px;padding-top: -6px"><h3><?php echo ucfirst($_SESSION['login_user']); ?>&nbsp;|&nbsp;<a href="../logout.php">LogOut</a></h3></li>
+
                 <!--<li><h4><a href="logout.php">Logout</a></h4></li>-->
             </ul>
         </div>

@@ -33,10 +33,11 @@ if (isset($_POST['login_btn'])) {
         $row = mysqli_num_rows($result);
         $use= mysqli_fetch_assoc($result);
         $current_user_id=$use['user_id'];
+        $role=$use['role'];
         // $row;
         if ($row == 1) {
             $_SESSION['login_user'] = $username;
-            $_SESSION['login_user_id'] = $current_user_id;
+            $_SESSION['role'] = $role;
 
             header("location: home.php?id=".$current_user_id);
 

@@ -40,7 +40,7 @@ while($row = mysqli_fetch_array($result)){
             }
             ?></h5>
 
-        <form role="form" method="post" action="" enctype="multipart/form-data">
+        <form role="form" method="post" action="update-user.php?id=<?php echo $editId;?>" enctype="multipart/form-data">
 
 
 
@@ -73,7 +73,12 @@ while($row = mysqli_fetch_array($result)){
                 <div class="col-lg-10">
                     <input type="password" class="form-control col-lg-9" id="cpassword" name="cpassword" value="<?php echo $row['password'];?>"></div>
             </div>
-
+            <div class="form-group row">
+                <label class="col-lg-2" for="role"> Role:</label>
+                <div class="col-lg-10">
+                    <select class="form-control col-lg-9" name="role"><option value="user">User</option><option value="admin">Admin</option></select>
+                </div>
+            </div>
 
             <div class="form-group row">
                 <label class="col-lg-2" for="room"> Room:</label>

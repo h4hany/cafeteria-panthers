@@ -13,6 +13,10 @@
 
 
 </head>
+<?php
+session_start();
+if($_SESSION['role'] == "admin"){
+?>
 <body>
 <div class='container text-center'>
 
@@ -62,7 +66,12 @@
                 <div class="col-lg-10">
                     <input type="password" class="form-control col-lg-9" id="cpassword" name="cpassword"></div>
             </div>
-
+            <div class="form-group row">
+                <label class="col-lg-2" for="role"> Role:</label>
+                <div class="col-lg-10">
+                    <select class="form-control col-lg-9" name="role"><option value="user">User</option><option value="admin">Admin</option></select>
+                </div>
+            </div>
 
             <div class="form-group row">
                 <label class="col-lg-2" for="room"> Room:</label>
@@ -112,5 +121,6 @@
 </div>
 
 </body>
+<?php }else{ header("location: my-orders.php");}?>
 
 </html>
