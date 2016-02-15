@@ -16,8 +16,8 @@
 <body>
 <div class='container text-center'>
 
-
     <?php require_once ('layout/header.php');?>
+
 <br><br><br>
     <div class='col-lg-12 text-left'>
         <h1>Add User</h1>

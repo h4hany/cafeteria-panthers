@@ -31,12 +31,14 @@ if (isset($_POST['login_btn'])) {
 
         $result = mysqli_query($connection, $sql);
         $row = mysqli_num_rows($result);
-           $use= mysqli_fetch_assoc($result);
+        $use= mysqli_fetch_assoc($result);
+        $current_user_id=$use['user_id'];
         // $row;
         if ($row == 1) {
             $_SESSION['login_user'] = $username;
+            $_SESSION['login_user_id'] = $current_user_id;
 
-            header("location: home.php?id=".$use['user_id']);
+            header("location: home.php?id=".$current_user_id);
 
         } else {
             $error = "Username or Password is invalid";

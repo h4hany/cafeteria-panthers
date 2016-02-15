@@ -33,7 +33,13 @@ if(isset($_SESSION['login_user'])){
 
 <div id="main" class="container-fluid">
     <!-- Nav Bar-->
-    <?php require_once ('layout/header.php');?>
+
+    <?php
+        if($_SESSION['login_user_id'] > 1){require_once ('layout/user-header.php');}else {
+        require_once ('layout/header.php');}
+
+
+    ?>
 
     <!-- End NavBar-->
 
