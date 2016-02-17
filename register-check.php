@@ -81,7 +81,7 @@ if ($errorCheck != 1) {
     $hashedPass = md5($password);
     $role=$_POST['role'];
      $bdCeck=new DatabaseChecker();
-    if($bdCeck->checkName($name,$connection,"user")==true || $bdCeck->checkEmail($email,$connection,"user")==true){
+    if($bdCeck->checkName($name,$connection,"user") != true || $bdCeck->checkEmail($email,$connection,"user") != true){
             $query = "insert into `user` (user_name,email,password,photo_link,role) VALUES ('$name','$email','$hashedPass','$target_file','$role')";
             $result = mysqli_query($connection, $query);
             if ($result) {
