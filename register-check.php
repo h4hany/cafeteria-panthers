@@ -82,26 +82,17 @@ if ($errorCheck != 1) {
     $role=$_POST['role'];
      $bdCeck=new DatabaseChecker();
     if($bdCeck->checkName($name,$connection,"user") != true || $bdCeck->checkEmail($email,$connection,"user") != true){
-            $query = "insert into `user` (user_name,email,password,photo_link,role) VALUES ('$name','$email','$hashedPass','$target_file','$role')";
+            $query = "insert into `user` (user_name,email,password,photo_link,role,room_id,room_ext) VALUES ('$name','$email','$hashedPass','$target_file','$role','$room','$ext')";
             $result = mysqli_query($connection, $query);
             if ($result) {
 
-                echo "add";
-                $lastID = mysqli_insert_id($connection);
 
-                $query4 = "insert into `room` (room_id,room_ext) VALUES ('$room','$ext')";
-                $result4 = mysqli_query($connection, $query4);
-                if ($result4) {
-
-                    $query3 = "insert into `user_room` (user_id,room_id) VALUES ('$lastID','$room')";
-                    $result3 = mysqli_query($connection, $query3);
-                }
 
             } else {
                 echo "error";
             }
             header("Location: http://localhost/cafeteria/all-users.php");
-            }
+    }
     else{header("Location: http://localhost/cafeteria/register.php?error=User already Exist in database"); }
 
 }else{header("Location: http://localhost/cafeteria/register.php?error=".$error);}

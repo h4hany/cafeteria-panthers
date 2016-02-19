@@ -17,6 +17,7 @@ while($row = mysqli_fetch_array($result)){
     <link rel="stylesheet" href="css/bootstrap.css">
     <title></title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
 
     <script src="js/jquery-1.11.2.js"></script>
 
@@ -63,7 +64,7 @@ while($row = mysqli_fetch_array($result)){
 
                 <label class="col-lg-2" for="password">Password:</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control col-lg-9" id="password" name="password" value="<?php echo $row['password'];?>"></div>
+                    <input type="password" class="form-control col-lg-9" id="password" name="password" value=""></div>
             </div>
 
 
@@ -71,7 +72,7 @@ while($row = mysqli_fetch_array($result)){
 
                 <label class="col-lg-2" for="cpassword">Confirm Password:</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control col-lg-9" id="cpassword" name="cpassword" value="<?php echo $row['password'];?>"></div>
+                    <input type="password" class="form-control col-lg-9" id="cpassword" name="cpassword" value=""></div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-2" for="role"> Role:</label>

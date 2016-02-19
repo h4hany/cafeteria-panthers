@@ -88,27 +88,17 @@ if ($errorCheck != 1) {
     $role=$_POST['role'];
     $updated_user_id=$_POST['id'];
     $bdCeck=new DatabaseChecker();
-    if($bdCeck->checkName($name,$connection,"user")==true || $bdCeck->checkEmail($email,$connection,"user")==true){
-        $query = "UPDATE  `user` set user_name='$name',email='$email',password='$hashedPass',photo_link='$target_file',role='$role' where id='$updated_user_id'";
+        $query = "UPDATE  `user` set user_name='$name',email='$email',password='$hashedPass',photo_link='$target_file',role='$role',room_id='$room',room_ext='$ext' where id='$updated_user_id'";
         $result = mysqli_query($connection, $query);
         if ($result) {
 
             echo "updated";
 
-            $query4 = "UPDATE `room` set room_id='$room',room_ext='$ext' WHERE room_id='$room' ";
-            $result4 = mysqli_query($connection, $query4);
-            if ($result4) {
-
-                $query3 = "update `user_room` set room_id='$room' WHERE user_id='$updated_user_id'";
-                $result3 = mysqli_query($connection, $query3);
-            }
 
         } else {
             echo "error";
         }
         header("Location: http://localhost/cafeteria/all-users.php");
-    }
-    else{header("Location: http://localhost/cafeteria/update-user.php?error=User already Exist in database"); }
 
 }else{header("Location: http://localhost/cafeteria/update-user.php?error=".$error);}
 

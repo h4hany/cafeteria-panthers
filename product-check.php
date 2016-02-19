@@ -58,11 +58,7 @@ if ($errorCheck != 1) {
         }
     }
 
-    /*
-    echo $product_name;
-    echo $price;
-    echo $product_cat;*/
-    $query = "insert into `product` (prod_name,price,pic_link,cat_id) VALUES ('$product_name','$price','$target_file','$product_cat')";
+    $query = "insert into `product` (prod_name,price,pic_link,cat_id,status,display) VALUES ('$product_name','$price','$target_file','$product_cat','available','yes')";
     $result = mysqli_query($connection, $query);
     if ($result) {
         echo "add";

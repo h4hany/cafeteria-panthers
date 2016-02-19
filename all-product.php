@@ -10,6 +10,7 @@
     <script src="js/jquery-1.11.2.js"></script>
 
     <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
 
 
 </head>
@@ -39,7 +40,7 @@
 
 
                     //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                    $sql="select * from `product`";
+                    $sql="select * from `product` where display='yes'";
                     $result = mysqli_query($connection, $sql);
 
                     //$row= mysqli_fetch_assoc($result);
@@ -49,8 +50,12 @@
                         echo "<td>" . $row['prod_name'] . "</td>";
                         echo "<td>" . $row['price'] . "</td>";
                         echo "<td><img src=" . $row['pic_link'] . " width='10%'></td>";
-                        echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a></td>";
-                        echo "</tr>";
+                        if($row['status']=="available") {
+                            echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a><br><div  id='status" . $row['prod_id'] . "' class='text-success'><i class='fa fa-toggle-on fa-3x' onclick='changeProudctStatusAvail(" . $row['prod_id'] . ")'></i></div></td>";
+                        }else{
+                            echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a><br><div  id='status" . $row['prod_id'] . "' class='text-danger'><i id='status' class='fa fa-toggle-off fa-3x' onclick='changeProudctStatusUnAvail(" . $row['prod_id'] . ")'></i></td>";
+                        }
+                            echo "</tr>";
 
 
                     }

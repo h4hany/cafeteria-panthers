@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>Admin</title><link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
 
         <script src="js/jquery-1.11.2.js"></script>
 
@@ -40,7 +41,7 @@
 
 
                         //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                        $sql="select u.user_id,u.user_name,u.photo_link,um.room_id,r.room_ext from `user` as u ,`user_room` as um,`room` as r where u.user_id=um.user_id and um.room_id=r.room_id ";
+                        $sql="select * from `user`";
                         $result = mysqli_query($connection, $sql);
 
                         //$row= mysqli_fetch_assoc($result);
