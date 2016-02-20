@@ -5,7 +5,7 @@ include("database.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title><link rel="stylesheet" href="css/bootstrap.css">
+    <title>Welcome To Cafeteria</title><link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">
 
@@ -19,16 +19,19 @@ include("database.php");
 <div class="container page-header " style="min-height:400px;" >
 
     <h1 class="text-left">orders</h1>
-    <?php  include("layout/header.php");// if($_SESSION['usertype']=='user'){ ?>
-        <?php
-        /*$data=$order->selectProducts() ;
-        $room=$shared->selectUsersRooms() ;*/
+
+    <?php
+        session_start();
+        if($_SESSION['role'] == "user"){require_once ('layout/user-header.php');}
+            else {require_once ('layout/header.php');}
+        if($_SESSION['role']=='user'){
+
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
 
 
         //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-        $sql="select room_id from `user`";
+        $sql="select DISTINCT  room_id from `user`";
         $result = mysqli_query($connection, $sql);
 
         //$row= mysqli_fetch_assoc($result);
@@ -86,7 +89,7 @@ include("database.php");
         <?php } ?>
     </div>
     <p class="clearfix"></p>
-<?php //}else{echo "you dont have permission to this page";} ?>
+<?php }else{echo "you dont have permission to this page";} ?>
     </div>
 
 <div class='col-lg-12 well'>

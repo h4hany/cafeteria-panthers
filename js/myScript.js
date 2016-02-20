@@ -61,18 +61,21 @@ $(function(){
 });
 
 function updateDate_added(){
+
     $.ajax({
         url:"ajax/do-update-product-add.php",
         method:'get',
         success:function(response){
+
             for(var i=0;i<response.length;i++){
-                if($("#prod_"+response[i].product_id).length==0){
-                    var prod="<div class='col-md-3 col-xs-6 prod' data='"+response[i].product_name+"' id='prod_"+response[i].product_id+"'";
-                    prod+="onclick='addproduct("+response[i].product_id+")'>";
-                    prod+=" <span class='badge' id='price_"+response[i].product_id+"'";
-                    prod+=" data='"+response[i].product_price+"'>"+response[i].product_price +"L.E </span>";
-                    prod+="<img src='uploads/"+response[i].image+"' />";
-                    prod+="<h3>"+response[i].product_name+"</h3></div>";
+
+                if($("#prod_"+response[i].prod_id).length==0){
+                    var prod="<div class='col-md-3 col-xs-6 prod' data='"+response[i].prod_name+"' id='prod_"+response[i].prod_id+"'";
+                    prod+="onclick='addproduct("+response[i].prod_id+")'>";
+                    prod+=" <span class='badge' id='price_"+response[i].prod_id+"'";
+                    prod+=" data='"+response[i].price+"'>"+response[i].price +"L.E </span>";
+                    prod+="<img src='"+response[i].pic_link+"' />";
+                    prod+="<h3>"+response[i].prod_name+"</h3></div>";
                     $('.right_order').append(prod);
                 }
             }
@@ -91,11 +94,11 @@ function updateDate_removed(){
         data:{},
         success:function(response){
             for(var i=0;i<response.length;i++){
-                if($("#prod_"+response[i].product_id).length){
-                    $("#prod_"+response[i].product_id).remove();
+                if($("#prod_"+response[i].prod_id).length){
+                    $("#prod_"+response[i].prod_id).remove();
                 }
-                if($("#prod_last_"+response[i].product_id).length){
-                    $("#prod_last_"+response[i].product_id).remove();
+                if($("#prod_last_"+response[i].prod_id).length){
+                    $("#prod_last_"+response[i].prod_id).remove();
                 }
             }
             updateDate_removed();

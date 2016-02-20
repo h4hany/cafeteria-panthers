@@ -37,9 +37,15 @@ if (isset($_POST['login_btn'])) {
         // $row;
         if ($row == 1) {
             $_SESSION['login_user'] = $username;
+            $_SESSION['login_user_id']=$current_user_id;
             $_SESSION['role'] = $role;
+            //echo  $_SESSION['login_user'];
+           // echo $_SESSION['login_user_id'];
+          //  echo  $_SESSION['role'];
 
-            header("location: home.php?id=".$current_user_id);
+            if($_SESSION['role'] =="admin"){
+            header("location: home.php?id=".$current_user_id);}
+            elseif ($_SESSION['role'] =="user"){header("location: user-order.php");}
 
         } else {
             $error = "Username or Password is invalid";

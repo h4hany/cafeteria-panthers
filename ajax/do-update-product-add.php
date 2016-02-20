@@ -5,7 +5,11 @@
  * Date: 2/19/16
  * Time: 9:55 AM
  */
-$sql="select prod_id from `product` status='unavailable'";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once ("../database.php");
+$sql="select * from `product` status='available'";
 $result = mysqli_query($connection, $sql);
 
 if($result){

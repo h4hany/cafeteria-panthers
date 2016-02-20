@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title></title>
+    <title>Welcome To Cafeteria</title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
@@ -37,6 +37,7 @@ if(isset($_SESSION['login_user'])){
     <?php
         if($_SESSION['role'] == "user"){require_once ('layout/user-header.php');}else {
         require_once ('layout/header.php');}
+
     ?>
 
     <!-- End NavBar-->

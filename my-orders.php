@@ -16,7 +16,9 @@
 </head>
 <body>
 <div class="container">
-    <?php require_once ('layout/header.php');?>
+    <?php session_start();
+    if($_SESSION['role'] == "user"){require_once ('layout/user-header.php');}
+    else {require_once ('layout/header.php');}?>
     <br><br><br><br><br><br>
     <h3 id="add"><a href="add-product.php">Add Product</a></h3>
     <div class="row">
@@ -39,7 +41,9 @@
                     ini_set('display_errors', 1);
 
                     //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                    $sql="select o.date,o.status,o.quantity,p.pic_link,p.price,p.prod_name,p.prod_id from `order` as o ,`product` as p where o.prod_id=p.prod_id and o.status='Processing' GROUP by o.date";
+                    $sql="SELECT `user.user_id` , `user.user_name` , SUM(orders_details.product_price  * orders_details.product_count) AS TotalAmount FROM `user`,`order`,`order_details` WHERE `order.user_id`=`user.user_id`
+	                 and `order.status`='done'
+	                 AND `order.order_id` = order_details.order_id And `order.user_id` = 2 HAVING SUM(order_details.price  * order_details.product_count) >0 order by `order.order_id` desc";
                     //$sql="select * from `order`  where  status='Processing' ";
 
                     $result = mysqli_query($connection, $sql);
