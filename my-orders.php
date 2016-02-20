@@ -1,5 +1,4 @@
 <?php require_once('database.php');?>
-<?php //require_once('register-check.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,13 +40,13 @@
                     ini_set('display_errors', 1);
 
                     //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                    $sql="SELECT `user.user_id` , `user.user_name` , SUM(orders_details.product_price  * orders_details.product_count) AS TotalAmount FROM `user`,`order`,`order_details` WHERE `order.user_id`=`user.user_id`
-	                 and `order.status`='done'
-	                 AND `order.order_id` = order_details.order_id And `order.user_id` = 2 HAVING SUM(order_details.price  * order_details.product_count) >0 order by `order.order_id` desc";
+                    $sql="SELECT u.user_id , u.user_name , SUM(ot.product_price  * ot.product_count) AS TotalAmount FROM `user`as u,`order` as o,`order_details` as ot WHERE o.user_id=u.user_id
+	                 and o.status='processing'
+	                 AND o.order_id = ot.order_id And o.user_id = 2 HAVING SUM(ot.product_price  * ot.product_count) >0 order by o.order_id desc";
                     //$sql="select * from `order`  where  status='Processing' ";
 
                     $result = mysqli_query($connection, $sql);
-
+if($result){echo "done";}else{echo "reeor";}
 
                             while( $row = mysqli_fetch_array($result)) {
 
