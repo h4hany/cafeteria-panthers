@@ -80,6 +80,7 @@ function updateDate_added(){
                 }
             }
             updateDate_added();
+            //console.log(response);
         },
         complete:function(){
         }, cache: false,
@@ -130,6 +131,8 @@ function addproduct (id) {
     }else{
         incremaent(id);
     }
+
+    console.log(pro_name);
 }
 function decremaent(id){
     var count=$("#count_"+id).text();

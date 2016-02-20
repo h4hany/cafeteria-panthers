@@ -43,8 +43,9 @@ if (isset($_POST['login_btn'])) {
            // echo $_SESSION['login_user_id'];
           //  echo  $_SESSION['role'];
 
-            if($_SESSION['role'] =="admin"){
-            header("location: home.php?id=".$current_user_id);}
+            if($_SESSION['role'] == "admin"){
+                header("location: home.php?id=".$current_user_id);
+            }
             elseif ($_SESSION['role'] =="user"){header("location: user-order.php");}
 
         } else {

@@ -38,32 +38,35 @@
 
                     error_reporting(E_ALL);
                     ini_set('display_errors', 1);
-
+                    $current_id=$_SESSION['login_user_id'];
                     //$sql = "SELECT * FROM `user` WHERE user_id > 1 ";
-                    $sql="SELECT u.user_id , u.user_name , SUM(ot.product_price  * ot.product_count) AS TotalAmount FROM `user`as u,`order` as o,`order_details` as ot WHERE o.user_id=u.user_id
+                   /* $sql="SELECT u.user_id , u.user_name , SUM(ot.product_price  * ot.product_count) AS TotalAmount FROM `user`as u,`order` as o,`order_details` as ot WHERE o.user_id=u.user_id
 	                 and o.status='processing'
 	                 AND o.order_id = ot.order_id And o.user_id = 2 HAVING SUM(ot.product_price  * ot.product_count) >0 order by o.order_id desc";
-                    //$sql="select * from `order`  where  status='Processing' ";
-
+                   */ //$sql="select * from `order`  where  status='Processing' ";
+                    $amount=0;
+                    $sql="SELECT * FROM `order` WHERE user_id='$current_id' order by order_id desc LIMIT 0, 5 ";
                     $result = mysqli_query($connection, $sql);
-if($result){echo "done";}else{echo "reeor";}
 
                             while( $row = mysqli_fetch_array($result)) {
+                               $orde_id= $row['order_id'];
+                                $sql2="SELECT * FROM product as p,order_details as ot WHERE ot.product_id=p.prod_id and ot.order_id='$orde_id' order by ot.order_id desc";
+                                $result2 = mysqli_query($connection, $sql2);
 
+                                    echo "<tr class='info'>";
+                                    echo '<td><button class="btn btn-default" data-toggle="collapse" data-target="#show-product'.$orde_id.'">' . $row['date'] . '</button>';
+                                     echo '<div id="show-product'.$orde_id.'" class="collapse">';
 
-                                echo "<tr class='info'>";
-                                // echo "<td>" . $row['date'] . "</td>";
-
-                                echo '<td><button class="btn btn-default" data-toggle="collapse" data-target="#show-product">'.$row['date'].'</button>
-                                      <div id="show-product" class="collapse">
-                                      <p>'. $row['price'] .' EG<br><img src=" '. $row['pic_link'] .' " width="10%">
-                                      <br>&nbsp;&nbsp;&nbsp;&nbsp;'.$row['quantity'].'
-                                      '. $row['prod_name'] .'
-                                      </p></div></td>';
-                                echo "<td>" . $row['status'] . "</td>";
-                                echo "<td>50 EG</td>";
-                                echo "<td><a class='btn btn-danger' href='cancel-order.php?ID=" . $row['prod_id'] . "'>CANCEL</a></td>";
-                                echo "</tr>";
+                                while( $row2 = mysqli_fetch_array($result2)) {
+                                             echo '<div class="col-lg-3">' . $row2['price'] . ' EG<br><img src=" ' . $row2['pic_link'] . ' " width="10%"><br>' . $row2['product_count'] . '
+                                                    ' . $row2['prod_name'] . '</div>';
+                                    $amount+=$row2['price']*$row2['product_count'];
+                                         }
+                                    echo '</div></td>';
+                                    echo "<td>" . $row['status'] . "</td>";
+                                    echo "<td>$amount EG</td>";
+                                    echo "<td><a class='btn btn-danger' href='cancel-order.php?ID=" . $row['order_id'] . "'>CANCEL</a></td>";
+                                    echo "</tr>";
 
 
                             }

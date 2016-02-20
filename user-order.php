@@ -81,7 +81,7 @@ include("database.php");
         <hr/>
         <?php
         while( $prod = mysqli_fetch_array($result1)) {            ?>
-            <div class="col-md-3 col-xs-6 prod" data="<?php echo $prod['prod_name'] ;?>" id="prod_last_<?php echo $prod['prod_id'] ;?>" onclick="addproduct(<?php echo $prod['prod_id'] ;?>)">
+            <div class="col-md-3 col-xs-6 prod" data="<?php echo $prod['prod_name'] ;?>" id="prod_<?php echo $prod['prod_id'] ;?>" onclick="addproduct(<?php echo $prod['prod_id'] ;?>)">
                 <span class="badge" id="price_<?php echo $prod['prod_id'] ;?>" data="<?php echo $prod['price'] ;?>"><?php echo $prod['price'] ;?> L.E </span>
                 <img src="<?php echo $prod['pic_link'] ;?>" width="40%"/>
                 <h3><?php echo $prod['prod_name'] ;?></h3>
