@@ -51,7 +51,7 @@
                         echo "<td>" . $row['price'] . "</td>";
                         echo "<td><img src=" . $row['pic_link'] . " width='10%'></td>";
                         if($row['status']=="available") {
-                            echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a><br><div  id='status" . $row['prod_id'] . "' class='text-success'><i class='fa fa-toggle-on fa-3x' onclick='changeProudctStatusAvail(" . $row['prod_id'] . ")'></i></div></td>";
+                            echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a><br><div  id='status" . $row['prod_id'] . "' class='text-success'><i class='fa fa-toggle-on fa-3x' onclick='changeProudctStatusAvail(".$row['prod_id'].")'></i></div></td>";
                         }else{
                             echo "<td><a class='btn btn-success' href='edit-product.php?ID=" . $row['prod_id'] . "'>edit</a>&nbsp; <a class='btn btn-danger' href='delete-product.php?ID=" . $row['prod_id'] . "'>delete</a><br><div  id='status" . $row['prod_id'] . "' class='text-danger'><i id='status' class='fa fa-toggle-off fa-3x' onclick='changeProudctStatusUnAvail(" . $row['prod_id'] . ")'></i></td>";
                         }

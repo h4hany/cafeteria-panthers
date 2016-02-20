@@ -68,7 +68,7 @@ if(isset($_SESSION['login_user'])){
                     $result = mysqli_query($connection, $sql);
 
                     //$row= mysqli_fetch_assoc($result);
-
+                    if($result)echo "true";else echo "false";
                     while( $row = mysqli_fetch_array($result)) {
                         echo "<tr class='info'>";
                         echo "<td>" . $row['date'] . "<div style='float:right'><button class=\"btn btn-default\" data-toggle=\"collapse\" data-target=\"#show-product\">+</button>
